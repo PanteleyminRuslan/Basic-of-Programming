@@ -1,0 +1,20 @@
+string sign(int n)
+{
+  if (n > 0)
+  {
+    return "+";
+  }
+  else
+    return "-";
+}
+int main()
+{
+  int n = 0;
+  cout << "n:";
+  cin >> n;
+  string sign1 = sign(n);
+  string sign2 = sign(1 - n);
+  if ((sign1 == "-" && sign2 == "+")|| (sign1 == "+" && sign2 == "-"))
+    cout << "-";
+  if (sign1 == "-" && sign2 == "-")
+    cout << "+";
