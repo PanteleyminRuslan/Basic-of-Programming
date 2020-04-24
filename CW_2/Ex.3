@@ -1,1 +1,20 @@
+#include <iostream>
+#include <algorithm>
+#include <iterator>
+#include <string>
+#include <sstream>
 
+using namespace std;
+
+int main()
+{
+  string str;
+  getline(cin, str);
+  stringstream ss(str);
+
+  transform(istream_iterator<string>(ss),
+    istream_iterator<string>(),
+    ostream_iterator<string>(cout, "\t"),
+    [](const string& w) { return string(w.rbegin(), w.rend()); }
+  );
+}
