@@ -1,1 +1,25 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+  
+  double arr[5];
+  int n = 5;
+  for (int i = 0; i < n; i++)
+  {
+    cin >> arr[i];
+  }
+  double Mmax = arr[0];
+  double max = arr[0];
+  for (int i = 0; i < n; i++)
+  {
+    if (arr[i] > Mmax)Mmax = arr[i];
+  }
+  for (int i = 0; i < n; i++)
+  {
+    if (arr[i]<Mmax && arr[i]>max)max = arr[i];
+  }
+  cout << max << "+" << Mmax << "=" << max + Mmax;
+  return 0;
+}
 
