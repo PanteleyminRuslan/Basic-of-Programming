@@ -1,0 +1,23 @@
+#include <iostream>
+
+struct triangle
+{
+	int a, b, c;
+	triangle(int a, int b, int c)
+	{
+		this->a = a;
+		this->b = b;
+		this->c = c;
+	}
+
+	int perimrtr()
+	{
+		return a + b + c;
+	}
+};
+
+int main()
+{
+	triangle ABC(3, 4, 5);
+	std::cout << ABC.perimrtr();
+}
