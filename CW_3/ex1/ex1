@@ -1,1 +1,80 @@
+#include <iostream>
+#include <string>
+#include <fstream>
+struct worker
+{
+	std::string surname;
+	float salary;
+	std::string	department;
+	float experience;
+};
+
+worker* sort_by_experience(worker* arr, int n)
+{
+	for(int i = 0; i < n; i++)
+	{
+		for (int j = i+1; j < n; j++)
+		{
+			if(arr[i].experience>arr[j].experience)
+			{
+				worker tmp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = tmp;
+			}
+		}
+	}
+	return arr;
+}
+
+worker* sort_by_department(worker* arr, int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = i + 1; j < n; j++)
+		{
+			if (arr[i].department > arr[j].department)
+			{
+				worker tmp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = tmp;
+			}
+		}
+	}
+	return arr;
+}
+
+worker highest_salary(worker* arr, int n)
+{
+	worker max = arr[0];
+	for(int i = 1; i < n; i++)
+	{
+		if(max.salary<arr[i].salary)
+		{
+			max = arr[i];
+		}
+	}
+	return max;
+}
+
+int main()
+{
+	std::ifstream reader("in.txt");
+	int n=0;
+	worker* workers = new worker[100];
+	while (!reader.eof())
+	{
+		reader >> workers[n].surname >> workers[n].salary >> workers[n].department >> workers[n].experience;
+		n++;
+	}
+	workers = sort_by_department(workers, n);
+	worker high = highest_salary(workers, n);
+	reader.close();
+	std::ofstream writer("out.txt");
+	for(int i =0;i<n;i++)
+	{
+		writer << workers[n].surname <<" "<< workers[n].salary <<" "<< workers[n].department<<" "<< workers[n].experience<< std::endl;
+	}
+
+	std::cout << high.surname << " " << high.department << " " << high.experience << " " << high.salary;
+}
 
