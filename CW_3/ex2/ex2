@@ -1,1 +1,40 @@
+#include <iostream>
+#include <fstream>
+#include <cstring>
+#include <string>
 
+using namespace std;
+
+int main()
+{
+
+	string studentA[100];
+	string studentB[100];
+	int i=0, j=0;
+	
+	ifstream reader("in1.txt");
+	while (!reader.eof())
+	{
+		getline(reader, studentA[i]);
+		i++;
+	}
+	reader.close();
+	reader.open("in2.txt");
+	while(!reader.eof())
+	{
+		getline(reader, studentB[j]);
+		j++;
+	}
+	
+	for(int k = 0; k < i;k++)
+	{
+		for (int l = 0; l < j; l++)
+		{
+			if (studentA[k]==studentB[l]) {
+				cout << studentA[k] << endl;
+				break;
+			}
+		}
+	}
+	
+}
